@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "13812020635",
+    "project_id": "emesmo-db24f",
+    "storage_bucket": "emesmo-db24f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:13812020635:android:73bba6b7c73e6494d89d3e",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "13812020635-o006uhoe5mem7njklg7a2kr7jt94d66t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSCJMpVUuO39jW49pWKXlsYLvmbNeKea8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "13812020635-o006uhoe5mem7njklg7a2kr7jt94d66t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

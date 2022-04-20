@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/screens/login/login.dart';
+import 'package:get/get.dart';
 import 'package:flutter_application_1/screens/onboarding/content_model.dart';
-import 'package:flutter_application_1/screens/onboarding/home.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class Onboarding extends StatefulWidget {
   @override
@@ -92,12 +90,7 @@ class _OnbordingState extends State<Onboarding> {
                   currentIndex == contents.length - 1 ? "Continue" : "Next"),
               onPressed: () {
                 if (currentIndex == contents.length - 1) {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => LogInScreen(),
-                    ),
-                  );
+                  Get.toNamed('/login');
                 }
                 _controller.nextPage(
                   duration: Duration(milliseconds: 100),

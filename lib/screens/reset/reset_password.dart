@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/screens/login/components/primary_button.dart';
-import 'package:flutter_application_1/screens/login/components/reset_form.dart';
+import 'package:flutter_application_1/components/primary_button.dart';
+import 'package:flutter_application_1/screens/reset/reset_form.dart';
 import 'package:flutter_application_1/screens/login/login.dart';
 import 'package:flutter_application_1/theme.dart';
 
@@ -37,14 +37,18 @@ class ResetPasswordScreen extends StatelessWidget {
               height: 40,
             ),
             GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => LogInScreen(),
-                      ));
-                },
-                child: PrimaryButton(buttonText: 'Alterar Senha')),
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => LogInScreen(),
+                    ));
+              },
+              child: PrimaryButton(
+                buttonText: 'Alterar Senha',
+                onTap: () {},
+              ),
+            ),
           ],
         ),
       ),
