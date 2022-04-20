@@ -40,10 +40,15 @@ class FirebaseSignUp {
   Future _setFirestoreUser(User user, UserModel model) async {
     return await _firestore.collection('users').doc(user.uid).set({
       'nome': model.name,
+      'cpf': model.cpf,
+      'email': model.email,
+      'telefone': model.phone,
     });
   }
 
   Future _setStorageUser(User user) async {
-    return await _storage.ref('uploads/${user.uid}/').putString('created');
+    return await _storage
+        .ref('uploads/${user.uid}/created.txt')
+        .putString('created');
   }
 }

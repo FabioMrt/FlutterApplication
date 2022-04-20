@@ -1,11 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/app_bindings.dart';
+import 'package:flutter_application_1/app_initial.dart';
 import 'package:flutter_application_1/routes/app_pages.dart';
 import 'package:flutter_application_1/routes/app_routes.dart';
-import 'package:flutter_application_1/screens/onboarding/onboarding_screen.dart';
 import 'package:flutter_application_1/theme.dart';
-import 'package:get/route_manager.dart';
+import 'package:get/get.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
               fontFamily: 'Poppins',
               primaryColor: kPrimaryColor,
             ),
-            initialRoute: Routes.ONBOARDING,
+            initialRoute: Routes.SPLASH,
             initialBinding: AppBindings(),
             getPages: AppPages.routes,
           );

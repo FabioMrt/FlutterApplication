@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/app_initial.dart';
 import 'package:get/get.dart';
 import 'package:flutter_application_1/screens/onboarding/content_model.dart';
 
@@ -11,9 +12,12 @@ class _OnbordingState extends State<Onboarding> {
   int currentIndex = 0;
   late PageController _controller;
 
+  final appInitial = Get.find<AppInitial>();
+
   @override
   void initState() {
     _controller = PageController(initialPage: 0);
+    appInitial.setAccess();
     super.initState();
   }
 
