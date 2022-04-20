@@ -27,6 +27,7 @@ class FirebaseSignUp {
         status = AuthResultStatus.successful;
       }
     } on FirebaseAuthException catch (e) {
+      print(e);
       status = AuthExceptionHandler.handleException(e);
     }
 

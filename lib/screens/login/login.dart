@@ -23,134 +23,144 @@ class LogInScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: [
-          Padding(
-            padding: kDefaultPadding,
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    height: 120,
-                  ),
-                  Text(
-                    'Bem Vindo',
-                    style: titleText,
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Row(
-                    children: [
-                      Text(
-                        'Não tem cadastro?',
-                        style: subTitle,
-                      ),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => SignUpScreen(),
-                            ),
-                          );
-                        },
-                        child: Text(
-                          'Inscrever-se',
-                          style: textButton.copyWith(
-                            decoration: TextDecoration.underline,
-                            decorationThickness: 1,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Form(
-                    key: formKey,
-                    child: Column(
+    return Theme(
+      data: ThemeData().copyWith(
+        dividerColor: Colors.transparent,
+      ),
+      child: Scaffold(
+        body: Stack(
+          children: [
+            Padding(
+              padding: kDefaultPadding,
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      height: 120,
+                    ),
+                    Text(
+                      'Bem Vindo',
+                      style: titleText,
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Row(
                       children: [
-                        AppInput(
-                          hintText: 'Email',
-                          validator: (value) => validateForm(
-                            value,
-                            ValidationMethod.EMAIL,
-                          ),
-                          onSaved: (value) {
-                            model.email = value ?? '';
-                          },
+                        Text(
+                          'Não tem cadastro?',
+                          style: subTitle,
                         ),
-                        SizedBox(height: 10),
-                        AppInput(
-                          hintText: 'Senha',
-                          isObscure: true,
-                          validator: (value) => validateForm(
-                            value,
-                            ValidationMethod.PASSWORD,
-                          ),
-                          onSaved: (value) {
-                            model.password = value ?? '';
+                        SizedBox(
+                          width: 5,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SignUpScreen(),
+                              ),
+                            );
                           },
+                          child: Text(
+                            'Inscrever-se',
+                            style: textButton.copyWith(
+                              decoration: TextDecoration.underline,
+                              decorationThickness: 1,
+                            ),
+                          ),
                         ),
                       ],
                     ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ResetPasswordScreen()));
-                    },
-                    child: Text(
-                      'Esqueceu a Senha?',
-                      style: TextStyle(
-                        color: kZambeziColor,
-                        fontSize: 14,
-                        decoration: TextDecoration.underline,
-                        decorationThickness: 1,
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Form(
+                      key: formKey,
+                      child: Column(
+                        children: [
+                          AppInput(
+                            hintText: 'Email',
+                            validator: (value) => validateForm(
+                              value,
+                              ValidationMethod.EMAIL,
+                            ),
+                            onSaved: (value) {
+                              model.email = value ?? '';
+                            },
+                          ),
+                          SizedBox(height: 10),
+                          AppInput(
+                            hintText: 'Senha',
+                            isObscure: true,
+                            validator: (value) => validateForm(
+                              value,
+                              ValidationMethod.PASSWORD,
+                            ),
+                            onSaved: (value) {
+                              model.password = value ?? '';
+                            },
+                          ),
+                        ],
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  PrimaryButton(
-                    buttonText: 'Entre',
-                    onTap: () async {
-                      if (formKey.currentState!.validate()) {
-                        formKey.currentState?.save();
-
-                        try {
-                          _loading.on();
-                          await controller.signIn(
-                            model.email,
-                            model.password,
-                          );
-                        } finally {
-                          _loading.out();
-                        }
-                      }
-                    },
-                  ),
-                ],
+                    SizedBox(
+                      height: 20,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ResetPasswordScreen()));
+                      },
+                      child: Text(
+                        'Esqueceu a Senha?',
+                        style: TextStyle(
+                          color: kZambeziColor,
+                          fontSize: 14,
+                          decoration: TextDecoration.underline,
+                          decorationThickness: 1,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-          Obx(
-            () => Visibility(
-              visible: _loading.status.value,
-              child: AppOverlay(),
+            Obx(
+              () => Visibility(
+                visible: _loading.status.value,
+                child: AppOverlay(),
+              ),
+            ),
+          ],
+        ),
+        persistentFooterButtons: [
+          Padding(
+            padding: kDefaultPadding,
+            child: PrimaryButton(
+              buttonText: 'Entre',
+              onTap: () async {
+                if (formKey.currentState!.validate()) {
+                  formKey.currentState?.save();
+
+                  try {
+                    _loading.on();
+                    await controller.signIn(
+                      model.email,
+                      model.password,
+                    );
+                  } finally {
+                    _loading.out();
+                  }
+                }
+              },
             ),
           ),
         ],

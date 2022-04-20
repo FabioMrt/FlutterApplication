@@ -4,6 +4,7 @@ class UserModel {
   String password;
   String phone;
   String cpf;
+  String role;
 
   UserModel({
     this.name = '',
@@ -11,5 +12,6 @@ class UserModel {
     this.password = '',
     this.phone = '',
     this.cpf = '',
+    this.role = '',
   });
 }
